@@ -20,6 +20,7 @@ app.post('/cars', async (req, res) => {
     const { brand, model, year } = req.body;
     const newCar = await db.one('INSERT INTO cars(brand, model, year) VALUES($1, $2, $3) RETURNING *', [brand, model, year]);
     res.json(newCar);
+    console.log('Git');
   } catch (error) {
     console.error('Error creating car:', error);
     res.status(500).json({ error: 'Internal Server Error' });
